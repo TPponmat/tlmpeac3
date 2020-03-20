@@ -96,12 +96,11 @@ WSGI_APPLICATION = 'tlmc3backend.wsgi.application'
 # }
 
 
-
 DATABASES = {
   'default': {
      'ENGINE': 'djongo',
      'NAME': 'heroku_7l964bnt',
-     'HOST' : 'mongodb://<dbuser>:<dbpassword>@ds013926.mlab.com:13926/heroku_7l964bnt',     
+     'HOST' : 'mongodb://heroku_7l964bnt:123456tp$@ds013926.mlab.com:13926/heroku_7l964bnt',     
      'USER' : 'heroku_7l964bnt',       
      'PASSWORD' : '123456tp$',
   }

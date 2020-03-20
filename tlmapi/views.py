@@ -17,7 +17,6 @@ from datetime import timedelta
 import pytz 
 import requests
 import json
-from background_task import background
 
 
 @csrf_exempt
