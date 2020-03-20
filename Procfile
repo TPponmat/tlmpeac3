@@ -1,1 +1,1 @@
-web: gunicorn tlmc3backend.wsgi
+gunicorn mysite.wsgi
