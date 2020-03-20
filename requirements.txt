@@ -1,5 +1,4 @@
 amqp==2.5.2
-psycopg2==2.8.4
 psycopg2-binary==2.8.4
 asgiref==3.2.5
 billiard==3.6.3.0
