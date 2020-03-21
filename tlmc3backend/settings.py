@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'tlmapi.apps.TlmapiConfig',
     'rest_framework',
     'rest_framework.authtoken',
-    'background_task'
 ]
 
 MIDDLEWARE = [
@@ -85,52 +84,27 @@ WSGI_APPLICATION = 'tlmc3backend.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE' : 'djongo',
-#         'NAME' : 'Cluster0',
-#         'HOST' : 'mongodb+srv://tpponmat:123456tp@cluster0-kkqya.mongodb.net/test',
-#         'USER' : 'tpponmat',
-#         'PASSWORD' : '123456tp',
-#    }
-# }
-
-
 DATABASES = {
-  'default': {
-     'ENGINE': 'djongo',
-     'NAME': 'heroku_7l964bnt',
-     'HOST' : 'mongodb://heroku_7l964bnt:123456tp$@ds013926.mlab.com:13926/heroku_7l964bnt',     
-     'USER' : 'heroku_7l964bnt',       
-     'PASSWORD' : '123456tp$',
-  }
+    'default': {
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'daclih3g14rs42',
+        'HOST' : 'ec2-52-207-93-32.compute-1.amazonaws.com',
+        'USER' : 'ivrylwjlzsagtr',
+        'PASSWORD' : '07a91eb5a8e2ff69ebe343d1acc12859997d53fdaef1ff8fd3293cf787dfcd90',
+   }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'NAME': 'myapp-djongo-db',
-#     }
-# }
 
 # DATABASES = {
-#   'default': {  
-#     'ENGINE':   'djongo',
-#     'NAME':     'Cluster0',
-#     'CLIENT': {
-#       'host': 'cluster0-kkqya.mongodb.net',
-#       'port': 27017,
-#       'username': 'tpponmat',
-#       'password': '123456tp',
-#       'authSource': 'test',
-#     } 
-#   },
+#   'default': {
+#      'ENGINE': 'djongo',
+#      'NAME': 'heroku_7l964bnt',
+#      'HOST' : 'mongodb://heroku_7l964bnt:123456tp$@ds013926.mlab.com:13926/heroku_7l964bnt',     
+#      'USER' : 'heroku_7l964bnt',       
+#      'PASSWORD' : '123456tp$',
+#   }
 # }
 
-
-        # 'HOST' : 'mongodb+srv://cluster0-comvj.mongodb.net/test',
-
-# mongodb+srv://cluster0-kkqya.mongodb.net/test
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
