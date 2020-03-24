@@ -83,8 +83,11 @@ def record(request):
     thaitime = pst_now.strftime("%Y-%m-%d %H:%M:%S")
 
     nowsx = datetime.datetime.now()
+    import time
+    time.sleep(3)
     add_data = transformer2(pub_date=thaitime, deviceid='deviceid', grid=grid, load=load, solar=solar)
     add_data.save()
+    time.sleep(3)
 
     return Response("SUCCESS", status=HTTP_200_OK)
 
