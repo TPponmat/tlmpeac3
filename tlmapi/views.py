@@ -88,7 +88,7 @@ def record(request):
     add_data = transformer2(pub_date=thaitime, deviceid='deviceid', grid=grid, load=load, solar=solar)
     add_data.save()
     import time
-    time.sleep(1)
+    time.sleep(0.5)
     
     x=transformer2.objects.get(load='9')
     print (x.load)
