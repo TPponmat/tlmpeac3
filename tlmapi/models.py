@@ -28,4 +28,12 @@ class transformer(models.Model):
     kwhc = models.FloatField(default=0,null=True, blank=True)
     kwhtot = models.FloatField(default=0,null=True, blank=True)
 
+class transformer2(models.Model):
+
+    pub_date = models.DateTimeField('date published',null=True, blank=True)
+    pub_time = models.TimeField('time published',null=True, blank=True)
+    deviceid = models.CharField(max_length=200,default='pv01',)
+    grid = models.FloatField(default=0,null=True, blank=True)
+    load = models.FloatField(default=0,null=True, blank=True)
+    solar = models.FloatField(default=0,null=True, blank=True)
     

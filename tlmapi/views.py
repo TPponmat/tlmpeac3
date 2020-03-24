@@ -65,31 +65,38 @@ def line(request, *args, **kw):
 def record(request):
 
     request_data = request.data
-    topic = request_data.get('topic', None)
-    print (topic)
-    msg = request_data.get('message', None)
-    print (msg)
-    deviceid = msg.get('deviceid', 'pv001')
-    grid = msg.get('grid', 0.0)
-    load = msg.get('load', 0.0)
-    solar= msg.get('solar', 0.0)
-    batt= msg.get('batt', 0.0)
+    # topic = request_data.get('topic', None)
+    # print (topic)
+    request_data = request.data
+    print (request_data)
+    deviceid = request_data.get('deviceid', 'pv001')
+    grid = request_data.get('grid', 0.0)
+    load = request_data.get('load', 0.0)
+    solar= request_data.get('solar', 0.0)
     print ((deviceid))
     print (type(grid))
     print (load)
     print (solar)
-    print (batt)
 
     utc_now = pytz.utc.localize(datetime.datetime.utcnow())
     pst_now = utc_now.astimezone(pytz.timezone('Asia/Bangkok'))
     thaitime = pst_now.strftime("%Y-%m-%d %H:%M:%S")
 
     nowsx = datetime.datetime.now()
-    add_data = transformer(pub_date=thaitime, deviceid='deviceid', grid=grid, load=load, solar=solar, batt=batt)
+    add_data = transformer2(pub_date=thaitime, deviceid='deviceid', grid=grid, load=load, solar=solar)
     add_data.save()
 
-    return Response(topic)
     return Response("SUCCESS", status=HTTP_200_OK)
+
+@csrf_exempt
+@api_view(["GET"])
+def gettestrecord(request, *args, **kw):
+
+
+    p=transformer2.objects.all()
+    q = (p.values('pub_date','grid','load','solar'))
+
+    return Response(q)
 
 @csrf_exempt
 @api_view(["GET"])
@@ -169,3 +176,4 @@ def gettlm(request, *args, **kw):
     q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
 
     return Response(q)
+
