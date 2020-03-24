@@ -91,7 +91,7 @@ DATABASES = {
         'HOST' : 'ec2-52-207-93-32.compute-1.amazonaws.com',
         'USER' : 'ivrylwjlzsagtr',
         'PASSWORD' : '07a91eb5a8e2ff69ebe343d1acc12859997d53fdaef1ff8fd3293cf787dfcd90',
-        'CONN_MAX_AGE': 2,
+        'CONN_MAX_AGE': 3,
    }
 }
 
