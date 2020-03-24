@@ -63,6 +63,8 @@ def line(request, *args, **kw):
 @csrf_exempt
 @api_view(["POST"])
 def record(request):
+    x=transformer2.objects.get(load='9')
+    print (x.load)
 
     request_data = request.data
     # topic = request_data.get('topic', None)
@@ -83,12 +85,13 @@ def record(request):
     thaitime = pst_now.strftime("%Y-%m-%d %H:%M:%S")
 
     nowsx = datetime.datetime.now()
-    import time
-    time.sleep(3)
     add_data = transformer2(pub_date=thaitime, deviceid='deviceid', grid=grid, load=load, solar=solar)
     add_data.save()
-    time.sleep(3)
-
+    
+    x=transformer2.objects.get(load='9')
+    print (x.load)
+    
+    return Response(x.load)
     return Response("SUCCESS", status=HTTP_200_OK)
 
 @csrf_exempt
