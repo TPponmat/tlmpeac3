@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'tlmc3backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE' : 'django.db.backends.postgresql',
-        'NAME' : 'daclih3g14rs42',
-        'HOST' : 'ec2-52-207-93-32.compute-1.amazonaws.com',
-        'USER' : 'ivrylwjlzsagtr',
-        'PASSWORD' : '07a91eb5a8e2ff69ebe343d1acc12859997d53fdaef1ff8fd3293cf787dfcd90',
+        'NAME' : 'd3po7gtbvmr4oi',
+        'HOST' : 'ec2-34-195-169-25.compute-1.amazonaws.com',
+        'USER' : 'hfykvxkyhbwegj',
+        'PASSWORD' : '7942aa7309ceda5f199b6fe408546382275103ceb19f57d655bdb20bfb92ae8b',
         'CONN_MAX_AGE': 3,
    }
 }
