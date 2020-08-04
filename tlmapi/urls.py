@@ -11,6 +11,6 @@ urlpatterns = [
     path('api/gettlm', views.gettlm),
     path('api/gettlmqtc', views.gettlmqtc),
     path('api/gettlmpci', views.gettlmpci),
-    path('api/gettlmpci', views.gettlmchi),
+    path('api/gettlmchi', views.gettlmchi),
     # path('api/line', views.line)
 ]
