@@ -10,5 +10,6 @@ urlpatterns = [
     path('api/gettestrecord', views.gettestrecord),
     path('api/gettlm', views.gettlm),
     path('api/gettlmqtc', views.gettlmqtc),
+    path('api/gettlmpci', views.gettlmpci),
     # path('api/line', views.line)
 ]
