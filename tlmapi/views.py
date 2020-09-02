@@ -220,9 +220,8 @@ def gettlmqtc(request, *args, **kw):
 
         start_date = datetime.date(int(datestart_year), int(datestart_month), int(datestart_date))
         end_date = (datetime.date(int(dateend_year), int(dateend_month), int(dateend_date)))+ timedelta(days=1)
-    q = ''
-    //p=transformer.objects.filter(pub_date__range=(start_date, end_date),deviceid='QTC0001')
-    //q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
+    p=transformer.objects.filter(pub_date__range=(start_date, end_date),deviceid='QTC0001')
+    q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
 
     return Response(q)
 
@@ -259,9 +258,9 @@ def gettlmpci(request, *args, **kw):
 
         start_date = datetime.date(int(datestart_year), int(datestart_month), int(datestart_date))
         end_date = (datetime.date(int(dateend_year), int(dateend_month), int(dateend_date)))+ timedelta(days=1)
-    q = ''
-    //p=transformer.objects.filter(pub_date__range=(start_date, end_date),deviceid='PCI0001')
-    //q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
+
+    p=transformer.objects.filter(pub_date__range=(start_date, end_date),deviceid='PCI0001')
+    q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
 
     return Response(q)
 
@@ -298,9 +297,9 @@ def gettlmchi(request, *args, **kw):
 
         start_date = datetime.date(int(datestart_year), int(datestart_month), int(datestart_date))
         end_date = (datetime.date(int(dateend_year), int(dateend_month), int(dateend_date)))+ timedelta(days=1)
-    q = ''
-    //p=transformer.objects.filter(pub_date__range=(start_date, end_date),deviceid='CHI0001')
-    //q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
+
+    p=transformer.objects.filter(pub_date__range=(start_date, end_date),deviceid='CHI0001')
+    q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
 
     return Response(q)
 
