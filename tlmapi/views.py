@@ -106,6 +106,135 @@ def gettestrecord(request, *args, **kw):
 
     return Response(q)
 
+
+
+@csrf_exempt
+@api_view(["GET"])
+def autorecordnodejs(request):
+    import json 
+    response = requests.get(
+            url="https://www.aismagellan.io/api/things/pull/22037ed0-72f1-11e9-810a-f990cf998f9d",
+            data=json.dumps({})
+        )
+    responsemsg = response.content
+    
+    msg = json.loads(responsemsg)
+
+    tempindoor = round(msg['T1'],3)
+    tempoutdoor = round(msg['T2'],3)
+    powera = round(msg['WA'],3)
+    powerb = round(msg['WB'],3)
+    powerc = round(msg['WC'],3)
+    powertot = round(float(msg['WA']) + float(msg['WB'])+ float(msg['WC']),3)
+
+    reactivepowera = round(msg['VARA'],3)
+    reactivepowerb = round(msg['VARB'],3)
+    reactivepowerc = round(msg['VARC'],3)
+    reactivepowertot = round(msg['VART'],3)
+    voltagea = round(msg['VA'],3)
+    voltageb = round(msg['VB'],3)
+    voltagec = round(msg['VC'],3)
+    kwha = round(msg['kwhA'],3)
+    kwhb = round(msg['kwhB'],3)
+    kwhc = round(msg['kwhC'],3)
+    kwhtot = round(msg['kwhtotal'],3)
+
+
+    try:
+        response = requests.post(
+            url="https://dtmsbackend.azurewebsites.net/recordtrdata",
+            headers={
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjUxZDRlMGVkM2VkMjY5NzVlZGNkNGUiLCJpYXQiOjE1OTkxOTg0NjF9.dv20SPp6eAGw-1uqPbJNBHywot127fyB0VN-P-fOMtQ",
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            data=json.dumps({
+                "temp_amb": tempindoor,
+                "current_C": "100",
+                "power_C": powera,
+                "voltage_C": voltagec,
+                "dtmsid": "0000001",
+                "current_A": "100",
+                "power_B": powera,
+                "voltage_A": voltagea,
+                "current_B": "100",
+                "power_tot": powertot,
+                "voltage_B": voltageb,
+                "power_A": powera,
+                "temp_oil": tempindoor
+            })
+        )
+        print('Response HTTP Status Code: {status_code}'.format(
+            status_code=response.status_code))
+        print('Response HTTP Response Body: {content}'.format(
+            content=response.content))
+    except requests.exceptions.RequestException:
+        print('HTTP Request failed')
+
+
+    
+
+
+    response = requests.get(
+            url="https://www.aismagellan.io/api/things/pull/c544e9c0-bc43-11ea-b7bc-61455edf93af",
+            data=json.dumps({})
+        )
+    responsemsg = response.content
+    
+    msg = json.loads(responsemsg)
+
+    tempindoor = round(msg['T1'],3)
+    tempoutdoor = round(msg['T2'],3)
+    powera = round(msg['WA'],3)
+    powerb = round(msg['WB'],3)
+    powerc = round(msg['WC'],3)
+    powertot = round(float(msg['WA']) + float(msg['WB'])+ float(msg['WC']),3)
+
+    reactivepowera = round(msg['VARA'],3)
+    reactivepowerb = round(msg['VARB'],3)
+    reactivepowerc = round(msg['VARC'],3)
+    reactivepowertot = round(msg['VART'],3)
+    voltagea = round(msg['VA'],3)
+    voltageb = round(msg['VB'],3)
+    voltagec = round(msg['VC'],3)
+    kwha = round(msg['kwhA'],3)
+    kwhb = round(msg['kwhB'],3)
+    kwhc = round(msg['kwhC'],3)
+    kwhtot = round(msg['kwhtotal'],3)
+
+
+    try:
+        response = requests.post(
+            url="https://dtmsbackend.azurewebsites.net/recordtrdata",
+            headers={
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjUxZDRlMGVkM2VkMjY5NzVlZGNkNGUiLCJpYXQiOjE1OTkxOTg0NjF9.dv20SPp6eAGw-1uqPbJNBHywot127fyB0VN-P-fOMtQ",
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            data=json.dumps({
+                "temp_amb": tempindoor,
+                "current_C": "100",
+                "power_C": powera,
+                "voltage_C": voltagec,
+                "dtmsid": "0000002",
+                "current_A": "100",
+                "power_B": powera,
+                "voltage_A": voltagea,
+                "current_B": "100",
+                "power_tot": powertot,
+                "voltage_B": voltageb,
+                "power_A": powera,
+                "temp_oil": tempindoor
+            })
+        )
+        print('Response HTTP Status Code: {status_code}'.format(
+            status_code=response.status_code))
+        print('Response HTTP Response Body: {content}'.format(
+            content=response.content))
+    except requests.exceptions.RequestException:
+        print('HTTP Request failed')
+
+
+    return Response("SUCCESS", status=HTTP_200_OK)
+
 @csrf_exempt
 @api_view(["GET"])
 def auto_record(request):
