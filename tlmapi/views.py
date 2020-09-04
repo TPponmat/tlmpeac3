@@ -349,11 +349,91 @@ def gettlmqtc(request, *args, **kw):
 
         start_date = datetime.date(int(datestart_year), int(datestart_month), int(datestart_date))
         end_date = (datetime.date(int(dateend_year), int(dateend_month), int(dateend_date)))+ timedelta(days=1)
-
     p=transformer.objects.filter(pub_date__range=(start_date, end_date),deviceid='QTC0001')
     q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
 
     return Response(q)
+
+
+
+@csrf_exempt
+@api_view(["GET","POST"])
+def gettlmpci(request, *args, **kw):
+
+    request_data = request.data
+    datestart = request_data.get('datestart')
+    dateend = request_data.get('dateend')
+    deviceid = request_data.get('deviceid')
+
+    if deviceid== None :
+        deviceid = 'TLM_peac3001'
+
+    if datestart== None or dateend == None:
+        utc_now = pytz.utc.localize(datetime.datetime.utcnow())
+        pst_now = utc_now.astimezone(pytz.timezone('Asia/Bangkok'))
+        thaidatetime = pst_now.date
+        start_date = pst_now.date()
+        end_date = pst_now.date()+ timedelta(days=1)
+
+    else:
+
+        datestart_date = ((datestart)[0:2])
+        datestart_month = ((datestart)[2:4])
+        datestart_year = ((datestart)[4:8])
+
+        dateend_date = ((dateend)[0:2])
+        dateend_month = ((dateend)[2:4])
+        dateend_year = ((dateend)[4:8])
+
+        start_date = datetime.date(int(datestart_year), int(datestart_month), int(datestart_date))
+        end_date = (datetime.date(int(dateend_year), int(dateend_month), int(dateend_date)))+ timedelta(days=1)
+
+    p=transformer.objects.filter(pub_date__range=(start_date, end_date),deviceid='PCI0001')
+    q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
+
+    return Response(q)
+
+
+
+@csrf_exempt
+@api_view(["GET","POST"])
+def gettlmchi(request, *args, **kw):
+
+    request_data = request.data
+    datestart = request_data.get('datestart')
+    dateend = request_data.get('dateend')
+    deviceid = request_data.get('deviceid')
+
+    if deviceid== None :
+        deviceid = 'TLM_peac3001'
+
+    if datestart== None or dateend == None:
+        utc_now = pytz.utc.localize(datetime.datetime.utcnow())
+        pst_now = utc_now.astimezone(pytz.timezone('Asia/Bangkok'))
+        thaidatetime = pst_now.date
+        start_date = pst_now.date()
+        end_date = pst_now.date()+ timedelta(days=1)
+
+    else:
+
+        datestart_date = ((datestart)[0:2])
+        datestart_month = ((datestart)[2:4])
+        datestart_year = ((datestart)[4:8])
+
+        dateend_date = ((dateend)[0:2])
+        dateend_month = ((dateend)[2:4])
+        dateend_year = ((dateend)[4:8])
+
+        start_date = datetime.date(int(datestart_year), int(datestart_month), int(datestart_date))
+        end_date = (datetime.date(int(dateend_year), int(dateend_month), int(dateend_date)))+ timedelta(days=1)
+
+    p=transformer.objects.filter(pub_date__range=(start_date, end_date),deviceid='CHI0001')
+    q = (p.values('pub_date','pub_time','tempindoor','tempoutdoor','powera','powerb','powerc' ,'powertot' ,'reactivepowera','reactivepowera','reactivepowerb' ,'reactivepowerc' ,'reactivepowertot','voltagea' ,'voltageb' ,'voltagec' ,'kwha','kwhb' ,'kwhc','kwhtot'))
+
+    return Response(q)
+
+
+
 
 import pika, os
 
